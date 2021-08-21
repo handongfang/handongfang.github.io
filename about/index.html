@@ -100,12 +100,35 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/about" class="waves-effect waves-light">
+    <a href="/" class="waves-effect waves-light">
+
       
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      <i class="fas fa-address-card" style="zoom: 0.6;"></i>
       
       <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/aboutme">
+          
+          <i class="fa fa-user-secret" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Another</span>
+        </a>
+      </li>
+      
+    </ul>
     
   </li>
   
@@ -255,12 +278,36 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/about" class="waves-effect waves-light">
+		<a href="javascript:;">
 			
-			    <i class="fa-fw fas fa-user-circle"></i>
+				<i class="fa-fw fas fa-address-card"></i>
 			
 			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/aboutme " style="margin-left:75px">
+				  
+				   <i class="fa fa fa-user-secret" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Another</span>
+                  </a>
+                </li>
+              
+            </ul>
           
         </li>
         
@@ -436,25 +483,8 @@
 
             <div class="description center-align">
                 
-                <span id="subtitle"></span>
-                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: [
-			          '从来没有真正的绝境, 只有心灵的迷途',
-			          'Never really desperate, only the lost of the soul',
-				  '没有伞的孩子必须努力奔跑！',
-				  '欲望以提升热忱，毅力以磨平高山。',
-				  '如果放弃太早，你永远都不知道自己会错过什么。',
-				  '没有礁石，就没有美丽的浪花；没有挫折，就没有壮丽的人生。',
-				  ],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
+                    <!-- 热爱生活,分享生活,分享知识 -->
+		    <span id="jinrishici-sentence">正在加载今日诗词....</span>' 
                 
             </div>
         </div>
@@ -1251,10 +1281,42 @@ $(function () {
     <script type="text/javascript"
     color="122 103 238" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
     </script>
+    <!--切换页面提示-->
     <script type="text/javascript" src="/js/FunnyTitle.js"></script>
+    <!--点击特效文字-->
     <script type="text/javascript" src="/js/click_show_text.js"></script>
+    <!--每日诗词名句-->
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    
+    <script type="text/javascript">
+        //只在桌面版网页启用特效
+        var windowWidth = $(window).width();
+        if (windowWidth > 768) {
+            document.write('<script type="text/javascript" src="/js/sakura.js"><\/script>');
+        }
+    </script>
 
 
-</body>
+        <script src="//cdn.jsdelivr.net/npm/js-base64/base64.min.js"></script>
+        <script>
+        const hasAttr = (e,a) => a.some(_=> e.attr(_)!==undefined);
+        $('a').each(function() {
+          const $this = $(this);
+          if(hasAttr($this,["data-fancybox","ignore-external-link"])) return;
+          const href = $this.attr('href');
+          if (href && href.match('^((http|https|thunder|qqdl|ed2k|Flashget|qbrowser|ftp|rtsp|mms)://)')) {
+            const strs = href.split('/');
+            if (strs.length >= 3) {
+                const host = strs[2];
+                if (host !== 'null' || window.location.host) {
+                    $this.attr('href', '/go.html?u='+Base64.encode(href)+'').attr('rel', 'external nofollow noopener noreferrer');
+                    if (true) {
+                        $this.attr('target', '_blank');
+                    }
+                }
+            }
+          }
+        });
+        </script></body>
 
 </html>
